@@ -7,6 +7,7 @@ import { postCard } from "../../actions/authActions";
 import "./style.css";
 import ImageUploader from "react-images-upload";
 // import API from "../../utils/API";
+import base64 from "base64-js";
 
 class Memento extends Component {
   constructor() {
@@ -49,9 +50,17 @@ class Memento extends Component {
   };
 
   onDrop(value) {
-    this.setState({
-      file: value
-    });
+      // this.setState({
+      //     file: value
+      // });
+
+      let reader = new FileReader();
+      reader.readAsDataURL(value);
+      reader.onloadend = () => {
+          this.setState({
+              file: reader.result
+          });
+      };
   }
 
   render() {

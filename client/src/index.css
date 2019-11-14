@@ -12,6 +12,10 @@ div[data-reactroot] {
   margin: 0;
 } */
 
+*:focus {
+  outline: none;
+}
+
 body, #root {
   height: 100vh;
   font-family: "Gill Sans", sans-serif;

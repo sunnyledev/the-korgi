@@ -18,8 +18,6 @@ class Memento extends Component {
       caption: "",
       location: "",
       errors: {},
-      // picture: "https://img.freepik.com/free-vector/cute-animal-doing-dabbing_23-2147847948.jpg?size=338&ext=jpg",
-      picture: "",
       file: null
     }
   };
@@ -44,32 +42,17 @@ class Memento extends Component {
       postImage: this.state.postImage,
       caption: this.state.caption,
       location: this.state.location
-      // date: ""
     };
 
     console.log(postData);
     this.props.postCard(postData);
   };
 
-  // onDrop(picture) {
-  //   console.log(picture);
-  //   this.setState({
-  //     pictures: this.state.pictures.concat(picture)
-  //   });
-  // }
-
-  photoUpload = e => {
-    e.preventDefault();
-    const reader = new FileReader();
-    const file = e.target.files[0];
-    reader.onloadend = () => {
-      this.setState({
-        file: file,
-        picture: reader.result
-      });
-    };
-    reader.readAsDataURL(file);
-  };
+  onDrop(value) {
+    this.setState({
+      file: value
+    });
+  }
 
   render() {
       const { errors } = this.state;
@@ -78,22 +61,16 @@ class Memento extends Component {
           <div className="post-outer">
               <h4 className="welcome-text">Share your story !</h4>
               <div className  ='post-div'>
-                <label htmlFor="photo-upload" className="custom-file-upload fas">
-                  <div className="img-wrap img-upload">
-                    <img htmlFor="photo-upload" src={this.state.picture}/>
-                  </div>
-                  <input id="photo-upload" type="file" onChange={this.photoUpload}/>
-                </label>
-              {/*<img className="image" src="https://img.freepik.com/free-vector/cute-animal-doing-dabbing_23-2147847948.jpg?size=338&ext=jpg" alt=""/>*/}
-              {/*<ImageUploader*/}
-              {/*    withIcon={false}*/}
-              {/*    buttonText='Choose images'*/}
-              {/*    onChange={this.onDrop}*/}
-              {/*    imgExtension={['.jpg', '.png']}*/}
-              {/*    maxFileSize={1048576} // in bytes*/}
-              {/*/>*/}
+              <ImageUploader
+                  withIcon={true}
+                  buttonText='Choose images'
+                  onChange={this.onDrop}
+                  imgExtension={['.jpg', '.png']}
+                  maxFileSize={1048576} // in bytes
+                  label="Max file size: 1MB, accepted: jpb | png"
+                  withPreview={true}
+              />
               <div className="text-div">
-                  <input type="file" accept="image/x-png,image/jpeg" title=" "/>
                       <input
                           value={this.state.location}
                           className="input-style"

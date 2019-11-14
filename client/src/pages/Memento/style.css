@@ -15,7 +15,6 @@
 
 .text-div {
     flex-grow: 2;
-    margin-left: 30px;
     display: flex;
     flex-flow: column wrap;
 }
@@ -44,60 +43,60 @@
     padding: 15px 15px 0;
 }
 
-.text-div > * {
-    margin: 0 0 20px;
-}
+/*input[type="file"] {*/
+/*    display: none;*/
+/*}*/
 
-.fileContainer {
-    box-shadow: none;
-}
+/*.custom-file-upload {*/
+/*    border-radius: 10px;*/
+/*    display: inline-block;*/
+/*    position: relative;*/
+/*    cursor: pointer;*/
+/*    background-image: url("image.png");*/
+/*    background-color: #9ba8ff;*/
+/*    background-repeat: no-repeat;*/
+/*    background-size: 170px;*/
+/*    background-position: center center;*/
+/*    margin-bottom: 25px;*/
+/*}*/
 
-input[type="file"] {
-    display: none;
-}
+/*.img-wrap{*/
+/*    position: relative;*/
+/*    width: 350px;*/
+/*    height: 350px;*/
+/*    overflow: hidden;*/
+/*    border-radius: 10px;*/
+/*}*/
+/*.img-upload:before{*/
+/*    content: "";*/
+/*    position: absolute;*/
+/*    padding-top: 80px;*/
+/*    top: 50%;*/
+/*    left: 50%;*/
+/*    transform: translate(-50%, -50%);*/
+/*    text-align: center;*/
+/*    width: 350px;*/
+/*    background-image: url("https://image.flaticon.com/icons/svg/2206/2206408.svg");*/
+/*    background-repeat: no-repeat;*/
+/*    background-size: 150px;*/
+/*    background-position: center center;*/
+/*    background-color: #9ba8ff;*/
+/*    height: 350px;*/
+/*    opacity: 0;*/
+/*    transition: .5s ease;*/
+/*}*/
+/*.img-upload:hover:before{*/
+/*    opacity: 1;*/
+/*}*/
+/*img {*/
+/*    width: auto;*/
+/*    height: 100%;*/
+/*}*/
 
-.custom-file-upload {
-    border-radius: 10px;
-    display: inline-block;
-    position: relative;
-    cursor: pointer;
-    background-image: url("image.png");
-    background-color: #9ba8ff;
-    background-repeat: no-repeat;
-    background-size: 170px;
-    background-position: center center;
-    margin-bottom: 25px;
-}
-
-.img-wrap{
-    position: relative;
-    width: 350px;
-    height: 350px;
-    overflow: hidden;
-    border-radius: 10px;
-}
-.img-upload:before{
-    content: "";
-    position: absolute;
-    padding-top: 80px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    width: 350px;
-    background-image: url("https://image.flaticon.com/icons/svg/2206/2206408.svg");
-    background-repeat: no-repeat;
-    background-size: 150px;
-    background-position: center center;
-    background-color: #9ba8ff;
-    height: 350px;
-    opacity: 0;
-    transition: .5s ease;
-}
-.img-upload:hover:before{
-    opacity: 1;
-}
-img {
-    width: auto;
-    height: 100%;
+.deleteImage {
+    width: 20px !important;
+    height: 20px !important;
+    font-size: 0.7em !important;
+    line-height: 22px !important;
+    font-weight: normal !important;
 }

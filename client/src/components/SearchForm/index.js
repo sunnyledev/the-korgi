@@ -6,15 +6,14 @@ function SearchForm(props) {
   return (
     <form className="search">
       <div className="form-group">
-        <label htmlFor="user">Users:</label>
         <input
           value={props.search}
           onChange={props.handleInputChange}
           name="user"
           list="users"
           type="text"
-          className="form-control"
-          placeholder="Type in a user's email to begin"
+          className="input-style"
+          placeholder="Type in a friend's email to begin"
           id="user"
         />
         <datalist id="users">
@@ -22,7 +21,7 @@ function SearchForm(props) {
             <option value={user.email} key={user._id} />
           ))}
         </datalist>
-        <button type="submit" onClick={props.handleFormSubmit} className="btn btn-success">
+        <button type="submit" onClick={props.handleFormSubmit} className="search-btn">
           Search
         </button>
       </div>

@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import API from "../utils/API";
-import Container from "../components/Container";
-import SearchForm from "../components/SearchForm";
-import SearchResults from "../components/SearchResults";
-import Alert from "../components/Alert";
+import API from "../../utils/API";
+import Container from "../../components/Container";
+import SearchForm from "../../components/SearchForm";
+import SearchResults from "../../components/SearchResults";
+import Alert from "../../components/Alert";
+import "./search-style.css";
 
 class Search extends Component {
   state = {
@@ -29,7 +30,7 @@ class Search extends Component {
     // If email matches search. Use that user's id to find their info.
     this.state.users.forEach(result => {
       if(this.state.search === result.email) {
-        API.getUser(result._id)
+        API.getUsers(result._id)
           .then(res => {
             if (res.data.status === "error") {
               throw new Error(res.data.message);
@@ -49,29 +50,27 @@ class Search extends Component {
   };
 
   render() {
-    return (
-      <div>
-        <Container style={{ minHeight: "80%" }}>
-          <h1 className="text-center">Search By Email!</h1>
-          <Alert
-            type="danger"
-            style={{ opacity: this.state.error ? 1 : 0, marginBottom: 10 }}
-          >
-            {this.state.error}
-          </Alert>
-          <SearchForm
-            handleFormSubmit={this.handleFormSubmit}
-            handleInputChange={this.handleInputChange}
-            users={this.state.users}
-          />
-          <SearchResults 
-            results={this.state.results} 
-            search={this.state.search}
-            saveFriend={this.saveFriend}
-          />
-        </Container>
-      </div>
-    );
+      return (
+          <div className="container-div">
+              <h4 className="text-center">Let's make some friends!</h4>
+              {/*<Alert*/}
+              {/*  type="danger"*/}
+              {/*  style={{ opacity: this.state.error ? 1 : 0, marginBottom: 10 }}*/}
+              {/*>*/}
+              {/*  {this.state.error}*/}
+              {/*</Alert>*/}
+              <SearchForm
+                handleFormSubmit={this.handleFormSubmit}
+                handleInputChange={this.handleInputChange}
+                users={this.state.users}
+              />
+              <SearchResults
+                results={this.state.results}
+                search={this.state.search}
+                saveFriend={this.saveFriend}
+              />
+          </div>
+      );
   }
 }
 

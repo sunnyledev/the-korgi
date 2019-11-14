@@ -1,9 +1,25 @@
 form.search {
+  display: flex;
+  flex-flow: row wrap;
   overflow: auto;
   margin-bottom: 10px;
+  align-items: center;
+  justify-content: center;
 }
 
-form.search button[type="submit"] {
-  float: right;
-  margin-top: 10px;
+.search-btn {
+  background-color: #6C81FF;
+  border-width: 0;
+  border-radius: 500px;
+  height: 50px;
+  width: 100px;
+  margin: 20px 0 0 20px;
+}
+
+.search > input {
+  flex-grow: 1;
+}
+
+.form-group {
+  width: 70%;
 }

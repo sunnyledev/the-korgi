@@ -8,7 +8,7 @@ const path = require("path");
 // Required Files
 const users = require("./routes/api/users");
 const cards = require("./routes/api/cards");
-const chatkitServer = require('../target/src/index');
+const chatkitServer = require('@pusher/chatkit-server');
 const app = express();
 const cors = require("cors");
 

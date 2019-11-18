@@ -62,7 +62,7 @@ class SignIn extends Component {
             id="email" 
             value={this.state.email}
             onChange={this.onChange}
-            error={errors.email}
+            // error={errors.email}
           />
           {errors.email && (
             <p className="error-text">{errors.email}</p>
@@ -75,7 +75,7 @@ class SignIn extends Component {
             id="password" 
             value={this.state.password} 
             onChange={this.onChange}
-            error={errors.password}
+            // error={errors.password}
           />
           {errors.password && (
             <p className="error-text">{errors.password}</p>

@@ -1,12 +1,9 @@
-import React, {Component, useState} from 'react';
+import React, {Component} from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import "./style.css";
-import throttle from "lodash.throttle";
-import axios from "axios";
-import {GET_ERRORS} from "../../actions/types";
 
 class Navbar extends Component {
 
@@ -16,22 +13,20 @@ class Navbar extends Component {
             isMenuShown: false,
             isSmallScreen: false
         };
+        this.handleWindowResize = this.handleWindowResize.bind(this);
     }
 
-    // throttledHandleWindowResize = () => {
-    //     return throttle(() => {
-    //         this.setState({ isSmallScreen: window.innerWidth < 530 })
-    //         console.log("HELLO");
-    //     }, 100);
-    // };
-    //
-    // componentDidMount() {
-    //     window.addEventListener('resize', this.throttledHandleWindowResize);
-    // }
-    //
-    // componentWillUnmount() {
-    //     window.removeEventListener('resize', this.throttledHandleWindowResize);
-    // }
+    handleWindowResize = () => {
+        this.setState({ isSmallScreen: window.innerWidth < 530 });
+    };
+
+    componentDidMount() {
+        window.addEventListener('resize', this.handleWindowResize);
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.handleWindowResize);
+    }
 
     onLogoutClick = e => {
         e.preventDefault();
@@ -41,23 +36,16 @@ class Navbar extends Component {
 
     onHomeButtonClick = e => {
         e.preventDefault();
-        // console.log("hi");
-        // this.props.history.push("/home");
-
-        axios.get("/api/users/all-users", {})
-            .then(res => console.log(res))
-            .catch(err =>
-                console.log(err)
-            )
+        this.props.history.push("/home");
     };
 
     onShowMenuClick = e => {
         console.log(this.state.isSmallScreen);
-      this.setState({
-          isMenuShown: !this.state.isMenuShown
-      })
+        this.setState({
+            isMenuShown: !this.state.isMenuShown
+        })
     };
-    
+
     render() {
         return (
             <nav className="navbar">
@@ -69,71 +57,71 @@ class Navbar extends Component {
                     <img id="home-image" src="https://image.flaticon.com/icons/svg/883/883806.svg" alt="Main page" onClick={this.onShowMenuClick}/>
                 </button>
 
-                    {/*// If user is authenticated then show dashboard, tasks, friend search ...*/}
-                    {this.props.auth.isAuthenticated && (
-                        <ul id="menu"
-                            style={{height: `${this.state.isSmallScreen ? (this.state.isMenuShown ? "auto" : 0) : "auto"}`,
-                                visibility: `${this.state.isSmallScreen ? (this.state.isMenuShown ? "visible" : "hidden") : "visible"}`}}>
-                            <li>
-                                <Link to="/dashboard"
-                                      className={
-                                          window.location.pathname === "/dashboard"
-                                              ? "nav-link active"
-                                              : "nav-link"
-                                      }>
-                                    Dashboard
-                                </Link>
-                            </li>
-                            <li>
-                                <Link to="/tasks"
-                                        className={
-                                        window.location.pathname === "/tasks"
-                                        ? "nav-link active"
-                                        : "nav-link"}> Tasks
-                                </Link>
-                            </li>
-                            <li>
-                                <Link to="/search"
-                                    className={
-                                    window.location.pathname === "/search"
-                                    ? "nav-link active"
-                                    : "nav-link"}>
-                                    Friend Seach
-                                </Link>
-                            </li>
-                            <li>
-                                <Link to="/memento"
-                                    className={
-                                    window.location.pathname === "/memento"
-                                    ? "nav-link active"
-                                    : "nav-link"
-                                    }>
-                                    Memento
-                                </Link>
-                            </li>
-                            <li>
-                                <Link to="/chat"
-                                    className={
-                                    window.location.pathname === "/chat"
-                                    ? "nav-link active"
-                                    : "nav-link"
-                                    }>
-                                    Chat
-                                </Link>
-                            </li>
-                            <li style={{ float:"right" }}>
-                                <Link to="/home"
-                                    onClick={this.onLogoutClick}
-                                    className={
-                                    window.location.pathname === "/home"
-                                    ? "nav-link active"
-                                    : "nav-link"
-                                    }>
-                                    Log Out
-                                </Link>
-                            </li>
-                        </ul>
-                    )}
+                {/*// If user is authenticated then show dashboard, tasks, friend search ...*/}
+                {this.props.auth.isAuthenticated && (
+                    <ul id="menu"
+                        style={{height: `${this.state.isSmallScreen ? (this.state.isMenuShown ? "auto" : 0) : "auto"}`,
+                            visibility: `${this.state.isSmallScreen ? (this.state.isMenuShown ? "visible" : "hidden") : "visible"}`}}>
+                        <li>
+                            <Link to="/dashboard"
+                                  className={
+                                      window.location.pathname === "/dashboard"
+                                          ? "nav-link active"
+                                          : "nav-link"
+                                  }>
+                                Dashboard
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/tasks"
+                                  className={
+                                      window.location.pathname === "/tasks"
+                                          ? "nav-link active"
+                                          : "nav-link"}> Tasks
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/search"
+                                  className={
+                                      window.location.pathname === "/search"
+                                          ? "nav-link active"
+                                          : "nav-link"}>
+                                Friend Seach
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/memento"
+                                  className={
+                                      window.location.pathname === "/memento"
+                                          ? "nav-link active"
+                                          : "nav-link"
+                                  }>
+                                Memento
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/chat"
+                                  className={
+                                      window.location.pathname === "/chat"
+                                          ? "nav-link active"
+                                          : "nav-link"
+                                  }>
+                                Chat
+                            </Link>
+                        </li>
+                        <li style={{ float:"right" }}>
+                            <Link to="/home"
+                                  onClick={this.onLogoutClick}
+                                  className={
+                                      window.location.pathname === "/home"
+                                          ? "nav-link active"
+                                          : "nav-link"
+                                  }>
+                                Log Out
+                            </Link>
+                        </li>
+                    </ul>
+                )}
 
                 {/*// If user isn't authenticated*/}
                 {!this.props.auth.isAuthenticated && (
@@ -150,11 +138,11 @@ class Navbar extends Component {
                         </li>
                         <li style={{ float:"right" }}>
                             <Link to="/login"
-                            className={
-                            window.location.pathname === "/login"
-                            ? "nav-link active"
-                            : "nav-link"}>
-                            Log In
+                                  className={
+                                      window.location.pathname === "/login"
+                                          ? "nav-link active"
+                                          : "nav-link"}>
+                                Log In
                             </Link>
                         </li>
                     </ul>
@@ -168,12 +156,12 @@ Navbar.propTypes = {
     logoutUser: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
     errors: PropTypes.object.isRequired
-  };
-  const mapStateToProps = state => ({
+};
+const mapStateToProps = state => ({
     auth: state.auth,
     errors: state.errors
-  });
-  export default connect(
+});
+export default connect(
     mapStateToProps,
     { logoutUser }
-  )(withRouter(Navbar));
+)(withRouter(Navbar));

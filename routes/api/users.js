@@ -9,24 +9,26 @@ const validateLoginInput = require("../../validation/login");
 // Load User model
 const User = require("../../models/User");
 
-router.get("/all-users", (req, res) => {
-  User.find({}).then(users => {
-    if (!users) return res.status(405).json({message: "It's so empty here..."});
-    console.log(users);
-    return users;
-  })
-});
-
+// Get user by email
 router.get("/user", (req, res) => {
-  const id = req.body._id;
-  User.findOne({ id }).then(user => {
+  User.findOne({ email: req.body.email }).then(user => {
     if(!user) return res.status(406).json({message: "User not found"});
     else { 
       console.log(user);
       return user;
     }
   })
-})
+});
+
+router.get("/all-users", (req, res) => {
+  User.find({ }).then(user => {
+    if(!user) return res.status(406).json({message: "User not found"});
+    else { 
+      // console.log(user);
+      res.send(user);
+    }
+  })
+});
 
 router.post("/register", (req, res) => {
     // Form validation

@@ -1,0 +1,37 @@
+.cls-4, .cls-6, .cls-8 { fill:#fff }
+.cls-5 { fill:#d69daa }
+.cls-5, .cls-6, .cls-7, .cls-8 {
+    stroke:#000;
+    stroke-width:4px
+}
+.cls-5,.cls-6 { stroke-miterlimit:10 }
+.cls-7 { fill: #3e6caf }
+.cls-7, .cls-8 {
+    stroke-linecap: round;
+    stroke-linejoin: round
+}
+
+#astronaut {
+    animation: astronaut-animation 30s infinite ease-in-out;
+    transform-origin: center;
+}
+
+@keyframes astronaut-animation {
+    0% { transform: translate(0px) rotate(0) }
+    20% { transform: translateY(-150px) rotate(10deg) }
+    40% { transform: translate(-170px, -250px) rotate(30deg) }
+    60% { transform: translate(-190px, -40px) rotate(90deg) }
+    80% { transform: translate(-190px, 50px) rotate(50deg) }
+    100% { transform: translateY(0px) rotate(0) }
+}
+
+#left-arm, #right-arm {
+    animation: arm-animation 4s infinite;
+    transform-origin: center;
+}
+
+@keyframes arm-animation {
+    0% { transform: rotate(0) }
+    50% { transform: rotate(2deg) }
+    100% { transform: rotate(0) }
+}

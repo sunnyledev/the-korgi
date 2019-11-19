@@ -74,13 +74,13 @@ ul#menu > li > a {
 }
 
 @media only screen and (max-width: 530px) {
-    .navbar {
-      padding: 5px 10px 0 10px;
-    }
+  .navbar {
+    padding: 5px 10px 0 10px;
+  }
 
-    .hamburger-menu {
-      display: unset;
-    }
+  .hamburger-menu {
+    display: unset;
+  }
 
   #menu {
     height: 0;

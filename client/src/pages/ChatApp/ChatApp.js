@@ -5,6 +5,7 @@ import SendMessageForm from '../../components/SendMessageForm'
 import RoomList from '../../components/RoomList'
 import NewRoomForm from '../../components/NewRoomForm'
 import { tokenUrl, instanceLocator, userId } from '../../config'
+import "./chatapp-style.css";
 
 // set the initial state of the object
 class ChatApp extends Component {
@@ -113,7 +114,7 @@ class ChatApp extends Component {
   // everytime state/data changes, the page rerenders and the new data will be pass down to the messages via props [messages=]
     render() {
       return (
-        <div className="app">
+        <div className="chat-div">
           <RoomList
               roomId={this.state.roomId}
               subscribeToRoom={this.subscribeToRoom}

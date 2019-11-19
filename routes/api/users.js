@@ -9,6 +9,14 @@ const validateLoginInput = require("../../validation/login");
 // Load User model
 const User = require("../../models/User");
 
+router.get("/all-users", (req, res) => {
+  User.find({}).then(users => {
+    if (!users) return res.status(405).json({message: "It's so empty here..."});
+    console.log(users);
+    return users;
+  })
+});
+
 router.get("/user", (req, res) => {
   const id = req.body._id;
   User.findOne({ id }).then(user => {

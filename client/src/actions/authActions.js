@@ -55,6 +55,16 @@ export const registerUser = (userData, history) => dispatch => {
       })
     );
 };
+
+export const getUsers = () => dispatch => {
+  axios.get("/api/users/all-users", {})
+      .then(res => console.log(res))
+      .catch(err =>
+      dispatch({
+          type: GET_ERRORS,
+          payload: err.response.data
+      }))
+};
 // Login - get user token
 export const loginUser = (userData) => dispatch => {
   axios

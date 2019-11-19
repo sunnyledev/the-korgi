@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import "./style.css";
-import throttle from "lodash.throttle";
 import axios from "axios";
 import {GET_ERRORS} from "../../actions/types";
 
@@ -16,22 +15,20 @@ class Navbar extends Component {
             isMenuShown: false,
             isSmallScreen: false
         };
+        this.handleWindowResize = this.handleWindowResize.bind(this);
     }
 
-    // throttledHandleWindowResize = () => {
-    //     return throttle(() => {
-    //         this.setState({ isSmallScreen: window.innerWidth < 530 })
-    //         console.log("HELLO");
-    //     }, 100);
-    // };
-    //
-    // componentDidMount() {
-    //     window.addEventListener('resize', this.throttledHandleWindowResize);
-    // }
-    //
-    // componentWillUnmount() {
-    //     window.removeEventListener('resize', this.throttledHandleWindowResize);
-    // }
+    handleWindowResize = () => {
+        this.setState({ isSmallScreen: window.innerWidth < 530 });
+    };
+
+    componentDidMount() {
+        window.addEventListener('resize', this.handleWindowResize);
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.handleWindowResize);
+    }
 
     onLogoutClick = e => {
         e.preventDefault();
@@ -41,14 +38,7 @@ class Navbar extends Component {
 
     onHomeButtonClick = e => {
         e.preventDefault();
-        // console.log("hi");
-        // this.props.history.push("/home");
-
-        axios.get("/api/users/all-users", {})
-            .then(res => console.log(res))
-            .catch(err =>
-                console.log(err)
-            )
+        this.props.history.push("/home");
     };
 
     onShowMenuClick = e => {

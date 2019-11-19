@@ -18,8 +18,8 @@ router.get("/all-users", (req, res) => {
 });
 
 router.get("/user", (req, res) => {
-  const id = req.body._id;
-  User.findOne({ id }).then(user => {
+  // const id = req.body._id;
+  User.findOne({}).then(user => {
     if(!user) return res.status(406).json({message: "User not found"});
     else { 
       console.log(user);

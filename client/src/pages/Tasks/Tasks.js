@@ -29,7 +29,7 @@ class Tasks extends Component {
   displayTask = (obj, length) => {
     let randomTask = Math.floor(Math.random() * (length - 0)) + 1;
     return obj[randomTask].task;
-  }
+  };
 
 render() {
     const { user } = this.props.auth;
@@ -45,7 +45,7 @@ return (
         <h3>
           {taskItem}
         </h3>
-        <Link to="/memento" className="link" style={{ fontFamily: 'Kranky', fontSize: '22px'}}>
+        <Link to="/memento" className="link">
           <button className="join" type="button">Create Post!</button>
         </Link>
       </div>

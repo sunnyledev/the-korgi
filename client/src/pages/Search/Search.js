@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { getAllUsers } from "../../actions/authActions";
-// import API from "../../utils/API";
 import axios from "axios";
 import "./style.css";
+import Typing from "react-typing-animation";
 
 class Search extends Component {
   constructor() {
@@ -55,22 +55,22 @@ class Search extends Component {
 
     return (
       <div className="parent-div">
-        <div className="top-div">
-          <p>Connect</p>
-          <h5>Find a friend . . .</h5>
+        <div className="top-div top-search-div">
+            <p className="header">A SWEET FRIENDSHIP REFRESHES THE SOUL</p>
         </div>
-        <div className="bottom-div">
+        <div className="search-div">
           <input 
-              className="input-style" 
-              type="search"  
-              placeholder="Enter a valid email here . . ." 
+              className="search-input"
+              type="text"
+              placeholder="Give me an email !"
               name="search" 
               id="search" 
               value={this.state.search}
               onChange={this.onChange}
-              error={errors.search}
-          />
-          <button className="sign-in" onClick={this.onSubmit} style={{ fontFamily: 'Kranky', fontSize: '20px'}}>Search</button>
+              error={errors.search}/>
+          <button className="search-btn" onClick={this.onSubmit}>
+            <img alt="Search" src="https://image.flaticon.com/icons/svg/149/149852.svg"/>
+          </button>
         </div>
         <div className="results-div">
           {/* Return users by email here */}
@@ -93,19 +93,30 @@ class Search extends Component {
               </div>
             ) : (
               <div>
-                <h1>Showing all users</h1>
+                <h6 style={{color: "gray", textAlign: "center"}}>Here is some friend suggestions for you...</h6>
                 {usersArray.map(user => (
                   <div className="user-div" key={user.email}>
-                    <div className="img-container">
-                      <img alt={user.firstName} src={user.userImage}/>
-                    </div>
+                    <img className="profile-image" alt={user.firstName} src={user.userImage}/>
                     <div className="user-info">
-                      <p>{user.firstName} {user.lastName}</p>
-                      <p>{user.email} {user.zipcode} {user.birthday}</p>
+                      <h4>{user.firstName} {user.lastName}</h4>
+                      <div className="info-div">
+                        <div>
+                          <img className="icon" alt="Email" src="https://image.flaticon.com/icons/svg/1033/1033956.svg"/>
+                          <p>{user.email}</p>
+                        </div>
+                        <div>
+                          <img className="icon" alt="Birthday" src="https://image.flaticon.com/icons/svg/864/864800.svg"/>
+                          <p>{user.birthday}</p>
+                        </div>
+                        <div>
+                          <img className="icon" alt="Location" src="https://image.flaticon.com/icons/svg/252/252106.svg"/>
+                          <p>{user.zipcode}</p>
+                        </div>
+                      </div>
                     </div>
-                    <div className="add-friend-div">
-                      <button className="add-friend" onClick={this.onAddFriend}>Add Friend</button>
-                    </div>
+                    <button className="add-friend-btn button" onClick={this.onAddFriend}>
+                      <img alt="Add friend" src="https://image.flaticon.com/icons/svg/1946/1946478.svg"/>
+                    </button>
                   </div>
                 ))}
               </div>

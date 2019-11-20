@@ -1,0 +1,14 @@
+.rooms-list {
+    display: flex;
+    flex-flow: column wrap;
+    padding: 20px;
+}
+
+.rooms-list > ul {
+    display: contents;
+    list-style: none;
+}
+
+.rooms-list > ul > li {
+    margin: 10px 5px;
+}

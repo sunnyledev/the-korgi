@@ -47,6 +47,7 @@
 .search-btn {
     background-color: #9BB1FE;
     border-width: 0;
+    height: 50px;
     width: 50px;
     border-top-right-radius: 500px;
     border-bottom-right-radius: 500px;

@@ -19,6 +19,8 @@
   margin: 0;
   height: 40px;
   padding: 5px 16px;
+  display: flex;
+  align-items: center;
 }
 
 #menu {

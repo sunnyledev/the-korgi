@@ -1,0 +1,18 @@
+.send-message-form {
+    width: 95%;
+    display: flex;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    position: absolute;
+    bottom: 0;
+}
+
+.send-message-div {
+    width: 100%;
+    display: flex;
+}
+
+.send-message-div > input {
+    display: flex;
+    flex-grow: 2;
+}

@@ -24,6 +24,7 @@
     letter-spacing: .4em !important;
     text-align: center;
     font-size: 1.8em !important;
+    margin: 0;
 }
 
 .search-input {
@@ -99,4 +100,14 @@
     border-width: 0;
     background-color: #9BB1FE;
     border-radius: 500px;
+}
+
+@media only screen and (max-width: 450px) {
+    .user-div {
+        flex-flow: column wrap;
+        justify-content: center;
+    }
+
+    .add-friend-btn { margin-bottom: 20px }
+    .user-info { margin-bottom: 5px }
 }

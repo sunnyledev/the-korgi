@@ -36,19 +36,18 @@ render() {
     let taskItem = this.determineAgeGroup(user.birthday);
 
 return (
-<div className="parent-div">
-      <div className="top-div">
-        <p>This Week Task</p>
-        {/* <h5>Todays task is to find something related to . . .</h5> */}
-      </div>
-      <div className="bottom-div">
-        <h3>
-          {taskItem}
-        </h3>
-        <Link to="/memento" className="link">
-          <button className="join" type="button">Create Post!</button>
-        </Link>
-      </div>
+    <div className="parent-div">
+        <div className="top-div top-search-div">
+            <p className="header">A TASK COULD BE THE START TO A NEW ADVENTURE</p>
+        </div>
+        <div className="bottom-div">
+            <h1 style={{fontFamily: "'Pompiere', cursive", fontSize: "5em", margin: "5% 0", textAlign: "center"}}>
+                " {taskItem} "
+            </h1>
+            <Link to="/memento" className="link">
+                <button className="join" type="button">Create Post!</button>
+            </Link>
+        </div>
     </div>
     );
   }

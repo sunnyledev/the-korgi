@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import { getAllUsers } from "../../actions/authActions";
 import axios from "axios";
 import "./style.css";
-import Typing from "react-typing-animation";
 
 class Search extends Component {
   constructor() {

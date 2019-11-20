@@ -41,7 +41,7 @@ return (
             <p className="header">A TASK COULD BE THE START TO A NEW ADVENTURE</p>
         </div>
         <div className="bottom-div">
-            <h1 style={{fontFamily: "'Pompiere', cursive", fontSize: "5em", margin: "5% 0", textAlign: "center"}}>
+            <h1 style={{fontFamily: "'Satisfy', cursive", fontSize: "5em", margin: "5% 0", textAlign: "center"}}>
                 " {taskItem} "
             </h1>
             <Link to="/memento" className="link">

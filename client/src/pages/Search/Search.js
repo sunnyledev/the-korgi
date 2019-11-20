@@ -109,7 +109,7 @@ class Search extends Component {
                         </div>
                   ) : (
                     <div className="empty-state-div">
-                      <img alt="Empty State" src={empty}/>
+                      <img className="empty-img" alt="Empty State" src={empty}/>
                       <p>We couldn't find anyone with this email... but let's try again!</p>
                     </div>
                   )

@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { logoutUser, getUser, getCard } from "../../actions/authActions";
 import "./dashboard-style.css";
 import axios from "axios";
-import EmptyStateSVG from "./EmptyStateSVG";
+import empty from "../../resources/images/empty.png";
 
 class Dashboard extends Component {
 
@@ -88,8 +88,8 @@ render() {
           ))}
             {(userCards.length === 0 && !this.state.isLoading) && (
                 <div className="posts-div" style={{display: "flex", flexFlow: "column wrap"}}>
-                    <EmptyStateSVG style={{width: "80%"}}/>
-                    <h5 style={{textAlign: "center", marginTop: "30px", color: "#999999"}}>It's so quiet here... let's go make a post!</h5>
+                    <img className="empty-img" alt="Empty State" src={empty} style={{width: "50%"}}/>
+                    <h6 style={{textAlign: "center", marginTop: "30px", color: "#999999"}}>It's so quiet here... let's make a post!</h6>
                 </div>
             )}
         </div>

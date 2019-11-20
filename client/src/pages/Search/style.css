@@ -111,3 +111,18 @@
     .add-friend-btn { margin-bottom: 20px }
     .user-info { margin-bottom: 5px }
 }
+
+.empty-state-div {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+}
+
+.empty-state-div > img:first-child {
+    width: 25%;
+    margin: 15px 0 50px;
+}
+
+.empty-state-div > p {
+    color: #b1b1b1;
+}
